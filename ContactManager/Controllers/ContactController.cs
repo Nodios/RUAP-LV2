@@ -23,5 +23,14 @@ namespace ContactManager.Controllers
         {
             return ContactRepository.GetAllContacts();
         }
-    }
+        public HttpResponseMessage Post(Contact contact)
+        {
+            ContactRepository.SaveContact(contact);
+
+            var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
+
+            return response;
+        }    }
+
+
 }
